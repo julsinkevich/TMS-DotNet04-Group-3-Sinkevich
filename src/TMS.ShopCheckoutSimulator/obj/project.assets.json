@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\TMS.ShopCheckoutSimulator.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\TMS.ShopCheckoutSimulator.csproj",
       "projectName": "TMS.ShopCheckoutSimulator",
-      "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\TMS.ShopCheckoutSimulator.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Source\\Repos\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\TMS.ShopCheckoutSimulator.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Source\\Repos\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

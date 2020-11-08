@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o57gbxxtKYPQjsNKyfXnY/ED1ctIBaxRbmg11BUGFK4tFJOvwfrwP1hMBO8IGxXdzZjKRMNlk5OSIbjthS1LrA==",
+  "dgSpecHash": "dJ8Y6HHNGBYxpdDew8COTkInucXB5C4xtGF6GyIxq9//X95SPZob3o/sBNU1EE+n9vIeESfiYs2l9L47vd2GLg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Documents\\GitHub\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\TMS.ShopCheckoutSimulator.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Source\\Repos\\TMS-DotNet04-Group-3-Sinkevich\\src\\TMS.ShopCheckoutSimulator\\TMS.ShopCheckoutSimulator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
