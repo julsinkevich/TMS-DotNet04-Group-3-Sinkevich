@@ -1,4 +1,5 @@
 ﻿using System;
+using TMS.ShopCheckoutSimulator.Models;
 
 namespace TMS.ShopCheckoutSimulator
 {
@@ -6,7 +7,8 @@ namespace TMS.ShopCheckoutSimulator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Product product = new Product();
+            product.AddProduct();
         }
     }
 }
