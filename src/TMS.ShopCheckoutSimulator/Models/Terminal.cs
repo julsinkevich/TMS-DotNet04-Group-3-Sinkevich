@@ -6,6 +6,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 {
     class Terminal
     {
-        private Basket Basket { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString().Substring(0, 2).ToUpper();
+        private Customer Basket { get; set; }
     }
 }
