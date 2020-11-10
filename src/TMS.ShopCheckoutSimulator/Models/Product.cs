@@ -17,7 +17,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 
         public override string ToString()
         {
-            return Code = Guid.NewGuid().ToString();
+            return Code = Guid.NewGuid().ToString().Substring(0,5).ToUpper();
         }
 
         public List<Product> AddProduct()
