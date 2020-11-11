@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using TMS.ShopCheckoutSimulator.Models;
 
@@ -8,22 +9,21 @@ namespace TMS.ShopCheckoutSimulator
     {
         static void Main(string[] args)
         {
+            BLproductsAndTotalSum();
+        }
+
+        private static void BLproductsAndTotalSum()
+        {
             var product = new Product();
             product.AddProduct();
 
             var basket = new Basket(product);
             basket.AddProductInBasket();
-            basket.GetSumOfСheck();
+            basket.GetSumOfBasket();
 
-            foreach (var item in basket.ProductInBasket)
-            {
-
-                Console.WriteLine(item.Code);
-                Console.WriteLine(item.NameOfProduct);
-                Console.WriteLine(item.PriceOfProduct);
-                Console.WriteLine("------------------\n");
-            }
-            Console.WriteLine($"sum of check - {basket.SumOfCheck} BYN");
+            var terminal = new Terminal(basket);
+            terminal.GetTerminalInfo(15); /// add count of people
+            terminal.GetSumOfTerminal();
         }
     }
 }
