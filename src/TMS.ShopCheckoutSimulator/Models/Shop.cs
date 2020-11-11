@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
     class Shop
     {
-        private Stopwatch workTime = new Stopwatch();
-
+        private Stopwatch WorkTime = new Stopwatch();
         public string Name { get; set; }
         public int TerminalCount { get; set; }
-
         public static SemaphoreSlim Terminals { get; set; }
-
         public Thread TerminalsThread { get; set; }
 
         public Shop()
@@ -64,6 +59,7 @@ namespace TMS.ShopCheckoutSimulator.Models
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"{customer.Id} купил, т.е список продуктов: ");
             terminal.GetTerminalInfo(1);
+            terminal.GetSumOfTerminal();
             Console.ResetColor();
             Thread.Sleep(time);
 
@@ -74,18 +70,18 @@ namespace TMS.ShopCheckoutSimulator.Models
         }
         public void OpenShop()
         {
-            workTime.Start();
+            Console.WriteLine($"Time of opening: {DateTime.Now}");
+            WorkTime.Start();
         }
         public void CloseShop()
         {
-            workTime.Stop();
-            TimeSpan ts = workTime.Elapsed;
+            WorkTime.Stop();
+            TimeSpan ts = WorkTime.Elapsed;
 
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
                 ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             Console.WriteLine($"Time of work {elapsedTime}");
             Console.WriteLine($"Closing time: {DateTime.Now}");
         }
-
     }
 }

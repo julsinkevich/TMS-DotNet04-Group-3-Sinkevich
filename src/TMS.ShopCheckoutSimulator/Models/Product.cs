@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
@@ -73,7 +71,6 @@ namespace TMS.ShopCheckoutSimulator.Models
                     Code = ToString()
                 }
             };
-
             return ListOfProducts;
         }
     }

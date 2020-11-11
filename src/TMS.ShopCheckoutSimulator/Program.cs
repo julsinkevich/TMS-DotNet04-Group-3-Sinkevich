@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Threading;
 using System.Diagnostics;
-using System.ComponentModel;
-using System.Linq;
-using TMS.ShopCheckoutSimulator.Models;
+using System.Collections.Generic;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
     class Program
     {
+        private static List<Thread> threads = new List<Thread>();
+
         static void Main(string[] args)
         {
             Console.WriteLine($"Time of opening: {DateTime.Now}");
-            ShopWork();
-            //TimeOfWork();
-           // BLproductsAndTotalSum();
+            TimeOfWork();
         }
         public static void ShopWork()
         {
@@ -29,23 +27,31 @@ namespace TMS.ShopCheckoutSimulator.Models
                 for (int i = 0; i < customersCount; i++)
                 {
                     shop.StartShopping();
-                    //Thread.Sleep(10000);
+                    threads.Add(shop.TerminalsThread);
+                    Thread.Sleep(5000);
                 }
             }
+            foreach (var thread in threads)
+            {
+                thread.Join();
+            }
+            Console.WriteLine("gdbg");
         }
-
-        private static void BLproductsAndTotalSum()
+        public static void TimeOfWork()
         {
-            var product = new Product();
-            product.AddProduct();
 
-            var basket = new Basket(product);
-            basket.AddProductInBasket();
-            basket.GetSumOfBasket();
+            Stopwatch workTime = new Stopwatch();
+            workTime.Start();
+            ShopWork();
+            workTime.Stop();
+            TimeSpan ts = workTime.Elapsed;
 
-            var terminal = new Terminal(basket);
-            terminal.GetTerminalInfo(15); /// add count of people
-            terminal.GetSumOfTerminal();
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine($"Time of work {elapsedTime}");
+            Console.WriteLine($"Closing time: {DateTime.Now}");
+
+            Console.ReadKey();
         }
     }
 }
