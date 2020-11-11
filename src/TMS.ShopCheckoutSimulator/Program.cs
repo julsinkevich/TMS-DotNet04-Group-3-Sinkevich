@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using TMS.ShopCheckoutSimulator.Models;
 using System.Diagnostics;
-using System.Globalization;
-using System.Threading;
 
-namespace ShopCheckoutSimulator
+namespace TMS.ShopCheckoutSimulator.Models
 {
     class Program
     {
-
         public static DateTime TimeOfOpen = DateTime.Now;
-
         static void Main(string[] args)
+        {
+            Console.WriteLine($"Time of opening: {TimeOfOpen}");
+            TimeOfWork();
+        }
+        public static void ShopWork()
         {
             Console.Write("Enter number of customers: ");
             var isCorrectNumber = int.TryParse(Console.ReadLine(), out int customersCount);
@@ -25,20 +25,17 @@ namespace ShopCheckoutSimulator
                 var shop = new Shop(cashiersCount);
                 for (int i = 0; i < customersCount; i++)
                 {
-                    Thread.Sleep(5000);
                     shop.StartShopping();
+                    Thread.Sleep(5000);
                 }
             }
-            Console.WriteLine($"Time of opening: {TimeOfOpen}");
-            TimeOfWork();
         }
 
         public static void TimeOfWork()
         {
-
             Stopwatch workTime = new Stopwatch();
             workTime.Start();
-            Thread.Sleep(5000);
+            ShopWork();
             workTime.Stop();
             TimeSpan ts = workTime.Elapsed;
 
@@ -47,7 +44,7 @@ namespace ShopCheckoutSimulator
             Console.WriteLine($"Time of work {elapsedTime}");
             Console.WriteLine($"Closing time: {DateTime.Now}");
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
