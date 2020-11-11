@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Threading;
-using TMS.ShopCheckoutSimulator.Models;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Linq;
+using TMS.ShopCheckoutSimulator.Models;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
     class Program
     {
-        public static DateTime TimeOfOpen = DateTime.Now;
         static void Main(string[] args)
         {
-            Console.WriteLine($"Time of opening: {TimeOfOpen}");
-            TimeOfWork();
+            Console.WriteLine($"Time of opening: {DateTime.Now}");
+            ShopWork();
+            //TimeOfWork();
+           // BLproductsAndTotalSum();
         }
         public static void ShopWork()
         {
@@ -26,25 +29,23 @@ namespace TMS.ShopCheckoutSimulator.Models
                 for (int i = 0; i < customersCount; i++)
                 {
                     shop.StartShopping();
-                    Thread.Sleep(5000);
+                    //Thread.Sleep(10000);
                 }
             }
         }
 
-        public static void TimeOfWork()
+        private static void BLproductsAndTotalSum()
         {
-            Stopwatch workTime = new Stopwatch();
-            workTime.Start();
-            ShopWork();
-            workTime.Stop();
-            TimeSpan ts = workTime.Elapsed;
+            var product = new Product();
+            product.AddProduct();
 
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
-                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-            Console.WriteLine($"Time of work {elapsedTime}");
-            Console.WriteLine($"Closing time: {DateTime.Now}");
+            var basket = new Basket(product);
+            basket.AddProductInBasket();
+            basket.GetSumOfBasket();
 
-            //Console.ReadKey();
+            var terminal = new Terminal(basket);
+            terminal.GetTerminalInfo(15); /// add count of people
+            terminal.GetSumOfTerminal();
         }
     }
 }

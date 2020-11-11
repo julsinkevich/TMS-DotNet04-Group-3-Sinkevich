@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -7,6 +8,8 @@ namespace TMS.ShopCheckoutSimulator.Models
 {
     class Shop
     {
+        private Stopwatch workTime = new Stopwatch();
+
         public string Name { get; set; }
         public int TerminalCount { get; set; }
 
@@ -34,8 +37,20 @@ namespace TMS.ShopCheckoutSimulator.Models
         public void DoShopping()
         {
             var random = new Random();
-            var time = random.Next(1000, 3777);
+            var time = random.Next(1000, 3200);
             var customer = new Customer();
+
+            var product = new Product();
+            product.AddProduct();
+
+            var basket = new Basket(product);
+            basket.AddProductInBasket();
+            basket.GetSumOfBasket();
+
+            var terminal = new Terminal(basket);
+
+            Thread.Sleep(time);
+
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{customer.Id} пришёл в магазин. Число свободных касс: {Terminals.CurrentCount}");
             Console.ResetColor();
@@ -48,6 +63,7 @@ namespace TMS.ShopCheckoutSimulator.Models
             Thread.Sleep(time);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"{customer.Id} купил, т.е список продуктов: ");
+            terminal.GetTerminalInfo(1);
             Console.ResetColor();
             Thread.Sleep(time);
 
@@ -56,5 +72,20 @@ namespace TMS.ShopCheckoutSimulator.Models
             Console.WriteLine($"Число свободных касс: {Terminals.CurrentCount}. {customer.Id} ушёл из магазина");
             Console.ResetColor();
         }
+        public void OpenShop()
+        {
+            workTime.Start();
+        }
+        public void CloseShop()
+        {
+            workTime.Stop();
+            TimeSpan ts = workTime.Elapsed;
+
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine($"Time of work {elapsedTime}");
+            Console.WriteLine($"Closing time: {DateTime.Now}");
+        }
+
     }
 }
