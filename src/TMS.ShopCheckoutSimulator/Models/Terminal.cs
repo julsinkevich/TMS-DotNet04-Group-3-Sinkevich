@@ -10,6 +10,7 @@ namespace TMS.ShopCheckoutSimulator.Models
         {
             _basket = basket;
         }
+
         /// <summary>
         /// Price of milk before discount
         /// </summary>
@@ -41,11 +42,10 @@ namespace TMS.ShopCheckoutSimulator.Models
                 CollectionOfProductForPeople.Add(result.ToList());
                 counter++;
             }
-
-
             foreach (var item in CollectionOfProductForPeople)
-            {;
-                Console.WriteLine($"*********User Name - Jhony*************");
+            {//;
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"*********Check*************");
 
                 foreach (var prod in item)
                 {
@@ -54,12 +54,12 @@ namespace TMS.ShopCheckoutSimulator.Models
                         prod.PriceOfProduct = _priceOfproductForSale * 0.8;
                         Console.WriteLine("!!!!Milk discount 20%!!!!");
                     }
-
                     Console.WriteLine($"Product ID - { prod.Code}");
                     Console.WriteLine($"Name of product - { prod.NameOfProduct}");
                     Console.WriteLine($"Price of product - { prod.PriceOfProduct}");
                     Console.WriteLine();
                 }
+                Console.ResetColor();
             }
         }
 
@@ -72,8 +72,8 @@ namespace TMS.ShopCheckoutSimulator.Models
                     TotalSumOfTerminal += prod.PriceOfProduct;
                 }
             }
-
-            Console.WriteLine($"Total sum - {TotalSumOfTerminal} BYN");
+            string result = String.Format("{0:C2}", TotalSumOfTerminal);
+            Console.WriteLine($"Total sum - {result} BYN");
             return TotalSumOfTerminal;
         }
     }

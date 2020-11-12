@@ -4,23 +4,22 @@ using System.Threading;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
-    class Shop
+    class Supermarket
     {
-        private Stopwatch WorkTime = new Stopwatch();
         public string Name { get; set; }
         public int TerminalCount { get; set; }
         public static SemaphoreSlim Terminals { get; set; }
         public Thread TerminalsThread { get; set; }
 
-        public Shop()
+        public Supermarket()
         {
-            Name = "Соседи";
+            Name = "Supermarket";
             TerminalCount = 1;
             Terminals = new SemaphoreSlim(1, 1);
         }
-        public Shop(int termialsCount)
+        public Supermarket(int termialsCount)
         {
-            Name = "Соседи";
+            Name = "Supermarket";
             TerminalCount = termialsCount;
             Terminals = new SemaphoreSlim(termialsCount, termialsCount);
         }
@@ -47,17 +46,17 @@ namespace TMS.ShopCheckoutSimulator.Models
             Thread.Sleep(time);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{customer.Id} пришёл в магазин. Число свободных касс: {Terminals.CurrentCount}");
+            Console.WriteLine($"The customer {customer.Id} came to the store.      Number of free terminals: {Terminals.CurrentCount}");
             Console.ResetColor();
             Thread.Sleep(time);
 
             Terminals.Wait();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{customer.Id} стал в очередь.");
+            Console.WriteLine($"The customer {customer.Id} stood in line.");
             Console.ResetColor();
             Thread.Sleep(time);
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{customer.Id} купил, т.е список продуктов: ");
+            Console.WriteLine($"The customer {customer.Id} bought: ");
             terminal.GetTerminalInfo(1);
             terminal.GetSumOfTerminal();
             Console.ResetColor();
@@ -65,7 +64,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 
             Terminals.Release();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Число свободных касс: {Terminals.CurrentCount}. {customer.Id} ушёл из магазина");
+            Console.WriteLine($"Number of free terminals: {Terminals.CurrentCount}.             The customer {customer.Id} left.");
             Console.ResetColor();
         }
     }

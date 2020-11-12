@@ -11,22 +11,42 @@ namespace TMS.ShopCheckoutSimulator.Models
 
         static void Main(string[] args)
         {
+            const string open = "Opening...\n";
+            foreach (char c in open)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write(c);
+                Thread.Sleep(500);
+                Console.ResetColor();
+            }
             Console.WriteLine($"Time of opening: {DateTime.Now}");
             TimeOfWork();
 
             Console.ReadKey();
         }
+        public static void TimeOfWork()
+        {
+            Stopwatch workTime = new Stopwatch();
+            workTime.Start();
+            ShopWork();
+            workTime.Stop();
+            TimeSpan ts = workTime.Elapsed;
 
-    public static void ShopWork()
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
+                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine($"Time of work {elapsedTime}. Closing time: {DateTime.Now} ");
+        }
+        public static void ShopWork()
         {
             Console.Write("Enter number of customers: ");
-            var isCorrectNumber = int.TryParse(Console.ReadLine(), out int customersCount);
+            var isCorrectNumber = Int32.TryParse(Console.ReadLine(), out int customersCount);
+
             Console.Write("Enter number of cashiers: ");
-            int.TryParse(Console.ReadLine(), out int cashiersCount);
+            Int32.TryParse(Console.ReadLine(), out int cashiersCount);
 
             if (isCorrectNumber)
             {
-                var shop = new Shop(cashiersCount);
+                var shop = new Supermarket(cashiersCount);
                 for (int i = 0; i < customersCount; i++)
                 {
                     shop.StartShopping();
@@ -38,21 +58,14 @@ namespace TMS.ShopCheckoutSimulator.Models
             {
                 thread.Join();
             }
-            Console.WriteLine("gdbg");
-        }
-        public static void TimeOfWork()
-        {
-
-            Stopwatch workTime = new Stopwatch();
-            workTime.Start();
-            ShopWork();
-            workTime.Stop();
-            TimeSpan ts = workTime.Elapsed;
-
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
-                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-            Console.WriteLine($"Time of work {elapsedTime}");
-            Console.WriteLine($"Closing time: {DateTime.Now}");
+            const string open = "...Closing\n";
+            foreach (char c in open)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write(c);
+                Thread.Sleep(500);
+                Console.ResetColor();
+            }
         }
     }
 }
