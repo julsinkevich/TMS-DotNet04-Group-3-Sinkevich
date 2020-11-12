@@ -11,6 +11,14 @@ namespace TMS.ShopCheckoutSimulator.Models
             _basket = basket;
         }
 
+        /// <summary>
+        /// Price of milk before discount
+        /// </summary>
+        private const double _priceOfproductForSale = 2.65;
+
+        /// <summary>
+        /// Object "basket"
+        /// </summary>
         private Basket _basket;
 
         /// <summary>
@@ -35,12 +43,19 @@ namespace TMS.ShopCheckoutSimulator.Models
                 counter++;
             }
 
+
             foreach (var item in CollectionOfProductForPeople)
-            {;
+            {
                 Console.WriteLine($"*********User Name - Jhony*************");
 
                 foreach (var prod in item)
                 {
+                    if(prod.NameOfProduct.Equals("Milk"))
+                    {
+                        prod.PriceOfProduct = _priceOfproductForSale * 0.8;
+                        Console.WriteLine("!!!!Milk discount 20%!!!!");
+                    }
+
                     Console.WriteLine($"Product ID - { prod.Code}");
                     Console.WriteLine($"Name of product - { prod.NameOfProduct}");
                     Console.WriteLine($"Price of product - { prod.PriceOfProduct}");
