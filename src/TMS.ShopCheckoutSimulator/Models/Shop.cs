@@ -46,13 +46,13 @@ namespace TMS.ShopCheckoutSimulator.Models
 
             Thread.Sleep(time);
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"{customer.Id} пришёл в магазин. Число свободных касс: {Terminals.CurrentCount}");
             Console.ResetColor();
             Thread.Sleep(time);
 
             Terminals.Wait();
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"{customer.Id} стал в очередь.");
             Console.ResetColor();
             Thread.Sleep(time);
@@ -64,24 +64,9 @@ namespace TMS.ShopCheckoutSimulator.Models
             Thread.Sleep(time);
 
             Terminals.Release();
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Число свободных касс: {Terminals.CurrentCount}. {customer.Id} ушёл из магазина");
             Console.ResetColor();
-        }
-        public void OpenShop()
-        {
-            Console.WriteLine($"Time of opening: {DateTime.Now}");
-            WorkTime.Start();
-        }
-        public void CloseShop()
-        {
-            WorkTime.Stop();
-            TimeSpan ts = WorkTime.Elapsed;
-
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
-                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-            Console.WriteLine($"Time of work {elapsedTime}");
-            Console.WriteLine($"Closing time: {DateTime.Now}");
         }
     }
 }

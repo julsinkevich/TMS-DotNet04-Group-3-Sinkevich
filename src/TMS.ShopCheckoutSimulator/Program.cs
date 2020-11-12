@@ -13,8 +13,11 @@ namespace TMS.ShopCheckoutSimulator.Models
         {
             Console.WriteLine($"Time of opening: {DateTime.Now}");
             TimeOfWork();
+
+            Console.ReadKey();
         }
-        public static void ShopWork()
+
+    public static void ShopWork()
         {
             Console.Write("Enter number of customers: ");
             var isCorrectNumber = int.TryParse(Console.ReadLine(), out int customersCount);
@@ -50,8 +53,6 @@ namespace TMS.ShopCheckoutSimulator.Models
                 ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             Console.WriteLine($"Time of work {elapsedTime}");
             Console.WriteLine($"Closing time: {DateTime.Now}");
-
-            Console.ReadKey();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 
             foreach (var item in CollectionOfProductForPeople)
             {;
-                Console.WriteLine($"Чек");
+                Console.WriteLine($" Сheck:");
 
                 foreach (var prod in item)
                 {
