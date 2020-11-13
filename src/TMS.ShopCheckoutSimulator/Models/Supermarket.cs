@@ -63,7 +63,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 
             Terminals.Release();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Number of free terminals: {Terminals.CurrentCount}.             The customer {customer.Id} left.");
+            Console.WriteLine($"Number of free terminals: {Terminals.CurrentCount}.            The customer {customer.Id} left.");
             Console.ResetColor();
         }
     }
