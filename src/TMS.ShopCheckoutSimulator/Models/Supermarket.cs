@@ -10,7 +10,6 @@ namespace TMS.ShopCheckoutSimulator.Models
         public int TerminalCount { get; set; }
         public static SemaphoreSlim Terminals { get; set; }
         public Thread TerminalsThread { get; set; }
-
         public Supermarket()
         {
             Name = "Supermarket";

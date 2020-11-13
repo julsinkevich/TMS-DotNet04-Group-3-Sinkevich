@@ -62,7 +62,6 @@ namespace TMS.ShopCheckoutSimulator.Models
                 Console.ResetColor();
             }
         }
-
         public double GetSumOfTerminal()
         {
             foreach (var item in CollectionOfProductForPeople)
