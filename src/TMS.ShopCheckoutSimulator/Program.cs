@@ -39,14 +39,14 @@ namespace TMS.ShopCheckoutSimulator.Models
         public static void ShopWork()
         {
             Console.Write("Enter number of customers: ");
-            var isCorrectNumber = Int32.TryParse(Console.ReadLine(), out int customersCount);
+            var isCorrectNumber = int.TryParse(Console.ReadLine(), out int customersCount);
 
             Console.Write("Enter number of cashiers: ");
-            Int32.TryParse(Console.ReadLine(), out int cashiersCount);
+            int.TryParse(Console.ReadLine(), out int cashiersCount);
 
             if (isCorrectNumber)
             {
-                var shop = new Supermarket(cashiersCount);
+                var shop = new SupermarketManager(cashiersCount);
                 for (int i = 0; i < customersCount; i++)
                 {
                     shop.StartShopping();

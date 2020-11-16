@@ -7,13 +7,10 @@
 
   <ItemGroup>
     <Compile Remove="Interfaces\**" />
-    <Compile Remove="Manager\**" />
     <Compile Remove="Services\**" />
     <EmbeddedResource Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Manager\**" />
     <EmbeddedResource Remove="Services\**" />
     <None Remove="Interfaces\**" />
-    <None Remove="Manager\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 

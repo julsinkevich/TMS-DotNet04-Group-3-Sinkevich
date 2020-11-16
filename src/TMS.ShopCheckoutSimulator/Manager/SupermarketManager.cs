@@ -4,19 +4,19 @@ using System.Threading;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
-    class Supermarket
+    class SupermarketManager
     {
         public string Name { get; set; }
         public int TerminalCount { get; set; }
         public static SemaphoreSlim Terminals { get; set; }
         public Thread TerminalsThread { get; set; }
-        public Supermarket()
+        public SupermarketManager()
         {
             Name = "Supermarket";
             TerminalCount = 1;
             Terminals = new SemaphoreSlim(1, 1);
         }
-        public Supermarket(int termialsCount)
+        public SupermarketManager(int termialsCount)
         {
             Name = "Supermarket";
             TerminalCount = termialsCount;

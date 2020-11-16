@@ -30,12 +30,16 @@ namespace TMS.ShopCheckoutSimulator.Models
         /// TotalSumOfTerminal
         /// </summary>
         public double TotalSumOfTerminal { get; set; }
-
+        public string Discount()
+        {
+            string[] arr = { "Milk", "Bread", "Apple", "Meat", "Chocolate", "Clothes", "Fish" };
+            string str = arr[new Random().Next(0, arr.Length - 1)];
+            return str;
+        }
         public void GetTerminalInfo(int counOfPeople)
         {
             var counter = 0;
             CollectionOfProductForPeople = new List<List<Product>>();
-
             while (counter != counOfPeople)
             {
                 var result = _basket.AddProductInBasket();
@@ -43,17 +47,19 @@ namespace TMS.ShopCheckoutSimulator.Models
                 counter++;
             }
             foreach (var item in CollectionOfProductForPeople)
-            {//;
+            {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"*********Check*************");
-
                 foreach (var prod in item)
                 {
-                    if(prod.NameOfProduct.Equals("Milk"))
+                    if (prod.NameOfProduct.Equals(Discount()))
                     {
                         prod.PriceOfProduct = _priceOfproductForSale * 0.8;
-                        Console.WriteLine("!!!!Milk discount 20%!!!!");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("!!!!Discount 20%!!!!");
+                        Console.ResetColor();
                     }
+
                     Console.WriteLine($"Product ID - { prod.Code}");
                     Console.WriteLine($"Name of product - { prod.NameOfProduct}");
                     Console.WriteLine($"Price of product - { prod.PriceOfProduct}");
