@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Threading;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
-    class Program
+    internal class Program
     {
         private static List<Thread> threads = new List<Thread>();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const string open = "Opening...\n";
             foreach (char c in open)
@@ -24,6 +24,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 
             Console.ReadKey();
         }
+
         public static void TimeOfWork()
         {
             Stopwatch workTime = new Stopwatch();
@@ -36,6 +37,7 @@ namespace TMS.ShopCheckoutSimulator.Models
                 ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             Console.WriteLine($"Time of work {elapsedTime}. Closing time: {DateTime.Now} ");
         }
+
         public static void ShopWork()
         {
             Console.Write("Enter number of customers: ");

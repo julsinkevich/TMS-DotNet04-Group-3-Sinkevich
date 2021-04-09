@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
-    class Terminal
+    internal class Terminal
     {
         public Terminal(Basket basket)
         {
@@ -30,12 +30,14 @@ namespace TMS.ShopCheckoutSimulator.Models
         /// TotalSumOfTerminal
         /// </summary>
         public double TotalSumOfTerminal { get; set; }
+
         public string Discount()
         {
             string[] arr = { "Milk", "Bread", "Apple", "Meat", "Chocolate", "Clothes", "Fish" };
             string str = arr[new Random().Next(0, arr.Length - 1)];
             return str;
         }
+
         public void GetTerminalInfo(int counOfPeople)
         {
             var counter = 0;
@@ -68,6 +70,7 @@ namespace TMS.ShopCheckoutSimulator.Models
                 Console.ResetColor();
             }
         }
+
         public double GetSumOfTerminal()
         {
             foreach (var item in CollectionOfProductForPeople)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
@@ -16,8 +15,9 @@ namespace TMS.ShopCheckoutSimulator.Models
 
         public override string ToString()
         {
-            return Code = Guid.NewGuid().ToString().Substring(0,5).ToUpper();
+            return Code = Guid.NewGuid().ToString().Substring(0, 5).ToUpper();
         }
+
         public List<Product> AddProduct()
         {
             ListOfProducts = new List<Product>

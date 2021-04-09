@@ -1,32 +1,35 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
-    class SupermarketManager
+    internal class SupermarketManager
     {
         public string Name { get; set; }
         public int TerminalCount { get; set; }
         public static SemaphoreSlim Terminals { get; set; }
         public Thread TerminalsThread { get; set; }
+
         public SupermarketManager()
         {
             Name = "Supermarket";
             TerminalCount = 1;
             Terminals = new SemaphoreSlim(1, 1);
         }
+
         public SupermarketManager(int termialsCount)
         {
             Name = "Supermarket";
             TerminalCount = termialsCount;
             Terminals = new SemaphoreSlim(termialsCount, termialsCount);
         }
+
         public void StartShopping()
         {
             TerminalsThread = new Thread(DoShopping);
             TerminalsThread.Start();
         }
+
         public void DoShopping()
         {
             var random = new Random();

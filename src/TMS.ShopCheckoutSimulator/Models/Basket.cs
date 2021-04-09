@@ -10,6 +10,7 @@ namespace TMS.ShopCheckoutSimulator.Models
         {
             _product = product;
         }
+
         private Product _product;
 
         /// <summary>
@@ -40,6 +41,7 @@ namespace TMS.ShopCheckoutSimulator.Models
 
             return ProductInBasket;
         }
+
         public double GetSumOfBasket()
         {
             return SumOfCheckInBasket = ProductInBasket

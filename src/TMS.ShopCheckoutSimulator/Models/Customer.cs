@@ -2,12 +2,15 @@
 
 namespace TMS.ShopCheckoutSimulator.Models
 {
-    class Customer
+    internal class Customer
     {
         /// <summary>
         /// Customer identification
         /// </summary>
         public string Id { get; set; } = Guid.NewGuid().ToString().Substring(0, 3).ToUpper();
-        public Customer(){}
+
+        public Customer()
+        {
+        }
     }
 }
